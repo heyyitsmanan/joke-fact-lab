@@ -1,0 +1,12 @@
+# Virtual Environment: Recreated from requirements.txt
+.venv/
+
+# API Keys and other local secrets
+.env
+
+# Python Generated Files
+__pycache__/
+*.py[cod]
+
+# Local Editor Settings
+.vscode/
