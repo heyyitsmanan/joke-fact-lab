@@ -16,7 +16,7 @@ client = OpenAI(
     base_url="https://api.groq.com/openai/v1",
 )
 
-def generate_joke_and_fact():
+def generate_joke_and_fact(topic):
     response = client.chat.completions.create(
         model = "openai/gpt-oss-20b",
         temperature = 0.7,
@@ -25,16 +25,12 @@ def generate_joke_and_fact():
                 "role": "system",
                 "content": (
                     "You create short, family-friendly jokes and concise, "
-                    "well-established facts about technology, programming, AI, "
-                    "cloud, cybersecurity, or developer life. Return the response as JSON."
+                    "well-established facts about any topic given to you. Return the response as JSON."
                 ),
             },
             {
                 "role": "user",
-                "content": (
-                    "Choose one interesting technology-related topic. "
-                    "Create one joke and one fact about that same topic."
-                ),
+                "content": f"Create one joke and one fact about {topic}",
             },
         ],
         response_format = {
@@ -61,11 +57,13 @@ st.set_page_config(page_title="Joke & Fact Lab", page_icon=":sparkles:")
 
 st.title("Joke & Fact Lab")
 st.write("Generate a joke and an interesting fact about technology and programming.")
+topics = ["Python", "AI", "Cloud Computing", "Cybersecurity", "AWS", "Databases", "Coding", "Gym", "Eating Healthy", "Developer Life"]
+selected_topic = st.selectbox("Choose to topic to know a joke and a fact about it: ",topics)
 
 if st.button("Generate"):
     try:
         with st.spinner("Creating your joke and fact..."):
-            result = generate_joke_and_fact()
+            result = generate_joke_and_fact(selected_topic)
 
         joke_column, fact_column = st.columns(2)
 
