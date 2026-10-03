@@ -57,7 +57,7 @@ st.set_page_config(page_title="Joke & Fact Lab", page_icon=":sparkles:")
 
 st.title("Joke & Fact Lab")
 st.write("Generate a joke and an interesting fact about technology and programming.")
-topics = ["Python", "AI", "Cloud Computing", "Cybersecurity", "AWS", "Databases", "Coding", "Gym", "Eating Healthy", "Developer Life"]
+topics = ["Python", "AI", "Cloud Computing", "Cybersecurity", "AWS", "Databases", "Coding", "Gym", "Eating Healthy", "Developer Life", "Working & Studying"]
 selected_topic = st.selectbox("Choose to topic to know a joke and a fact about it: ",topics)
 
 if st.button("Generate"):
